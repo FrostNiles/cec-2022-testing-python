@@ -41,6 +41,6 @@ CEC = cec2022_func(func_num = fx_n)
 x = test
 F = CEC.values(x)
 for num in F.ObjFunc:
-    print(f"{num:.10f}")
+    print(f"{num:.9f}")
     with open(f"test_data/current_result_{argNum}.txt", 'w') as file:
-        file.write(f"{num:.10f}")
+        file.write(f"{num:.9f}")
