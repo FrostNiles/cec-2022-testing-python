@@ -9,6 +9,7 @@ arg3 = sys.argv[3]
 # Run the first Python script
 argNum = arg1
 dimension = arg2
+number_of_element = int(arg3) - 1
 
 sys.argv = ['run-tests.py', arg1, arg2, arg3]
 #import the original data
@@ -65,7 +66,9 @@ while int(eightDigits) == 0:
     lastTwoDigits = after[-2:]
     counter_first += 1
     if counter_first == 40:
-        sys.exit()
+        with open(f'test_data/result/result_data_{argNum}_dim_{dimension}_number_of_element_{number_of_element+1}.txt', 'w') as file:
+            file.write(f"deviation:{float('inf')}")
+        sys.exit(f"Function:{argNum}, Dimension:{dimension}, Element:{arg3} has a deviation of infinity")
 
 with open(f'test_data/shift_data_{argNum}.txt', 'r') as file:
     data = file.read()
