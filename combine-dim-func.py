@@ -17,14 +17,14 @@ if __name__ == '__main__':
     # Create a ThreadPoolExecutor
     with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = []
-        for i in range(12, 13):
+        for i in range(1, 13):
             if i in skipped:
                 continue
             # Run the test in a separate thread
             futures.append(executor.submit(run_test, i))
 
         # Wait for all the tests to finish or timeout after 60 seconds
-        for future in concurrent.futures.as_completed(futures, timeout=180):
+        for future in concurrent.futures.as_completed(futures):
             try:
                 future.result()
             except concurrent.futures.TimeoutError:
